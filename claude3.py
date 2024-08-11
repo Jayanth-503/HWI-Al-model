@@ -2,10 +2,10 @@
 # Setting up Amazon Bedrock with AWS SDK Boto3 🐍️
 # -----------------------------------------------
 
-import boto3, json
+import boto3, json, os
 bedrock_runtime=boto3.client(service_name="bedrock-runtime",
-                             aws_access_key_id="AKIAZAI4G2JAX2QLD3BG",
-                             aws_secret_access_key="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",
+                             aws_access_key_id=os.getenv("AWS_ID"),
+    aws_secret_access_key=os.getenv("AWS_KEY"),
                              region_name="us-east-1",
                              )
 # Model configuration 
@@ -31,5 +31,6 @@ response = bedrock_runtime.invoke_model(
     body=json.dumps(body),
 )
 # Process and print the response
+
 result = json.loads(response.get("body").read()).get("content", [])[0].get("text", "")
 print(result)

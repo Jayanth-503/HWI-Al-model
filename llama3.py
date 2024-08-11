@@ -1,17 +1,17 @@
 # Use the native inference API to send a text message to Meta Llama 3.
 
 import boto3
-import json
+import json, os
 
 from botocore.exceptions import ClientError
 
 # Create a Bedrock Runtime client in the AWS Region of your choice.
 client = boto3.client("bedrock-runtime",
-                             aws_access_key_id="AKIAZAI4G2JAX2QLD3BG",
-                             aws_secret_access_key="vD2RKz4T82zUGwuGaryJSgMLTv8jnl4Qj0dvqgpr",
+                             aws_access_key_id=os.getenv("AWS_ID"),
+    aws_secret_access_key=os.getenv("AWS_KEY"),
                              region_name="us-east-1",
                              )
-# Set the model ID, e.g., Llama 3 8b Instruct.
+# Set the model ID, e.g., Llama 3 8b Instruct
 model_id = "amazon.titan-embed-text-v2:0"
 # model_id = "meta.llama3-8b-instruct-v1:0"
 

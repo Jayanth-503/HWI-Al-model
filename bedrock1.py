@@ -7,11 +7,12 @@ import json
 import filetype
 llm = Bedrock(
     model="meta.llama3-8b-instruct-v1:0",
-    aws_access_key_id="AKIAZAI4G2JAX2QLD3BG",
-    aws_secret_access_key="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",
+    aws_access_key_id=os.getenv("AWS_ID"),
+    aws_secret_access_key=os.getenv("AWS_KEY"),
     region_name="us-east-1"
 )
-embed_model = BedrockEmbedding(region_name="us-east-1",aws_access_key_id="AKIAZAI4G2JAX2QLD3BG",aws_secret_access_key="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")
+embed_model = BedrockEmbedding(region_name="us-east-1",aws_access_key_id=os.getenv("AWS_ID"),
+    aws_secret_access_key=os.getenv("AWS_KEY"))
 # aws ec2 instance those were switcehd off
 Settings.embed_model=embed_model
 Settings.llm = llm
