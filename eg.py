@@ -1,11 +1,6 @@
 import getpass
 import os
 
-# setx ANTHROPIC_API_KEY "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"
-
-
-
-# os.environ["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"] = getpass.getpass()
 
 # from langchain_anthropic import ChatAnthropic
 
